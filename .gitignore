@@ -16,3 +16,4 @@
 
 # idea config path
 .idea/
+go.sum
