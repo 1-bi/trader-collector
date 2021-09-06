@@ -6,6 +6,7 @@ import (
 	"github.com/1-bi/log-zap"
 	"github.com/1-bi/log-zap/appender"
 	zaplayout "github.com/1-bi/log-zap/layout"
+	"github.com/1-bi/trader-collector/server"
 	"log"
 )
 
@@ -43,7 +44,7 @@ func prepareLogSetting() {
 	mainOpt.AddAppender(consoleAppender)
 
 	var agentOpt = logzap.NewLoggerOption()
-	agentOpt.SetLoggerPattern("pisauridae")
+	agentOpt.SetLoggerPattern("trader-collector")
 	agentOpt.SetLevel("debug")
 	agentOpt.AddAppender(consoleAppender)
 
@@ -61,5 +62,9 @@ func main() {
 	prepareLogSetting()
 
 	//server.Main()
+
+	nodeWorker := server.NewNodeWorker("master")
+
+	println(nodeWorker)
 
 }
